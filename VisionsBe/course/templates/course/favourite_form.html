@@ -1,0 +1,35 @@
+{% extends 'course/base.html' %}
+{% load static %}
+
+{%block css%}
+{%endblock%}
+
+{%block title%}
+{%endblock%}
+
+{% block content %}
+<div class="card text-center">
+    <div class="card-header pt-5 pb-5">
+      Add to Favourites
+    </div>
+    <div class="card-body">
+      <h5 class="card-title display-4 font-weight-bold">Adding {{course}} to Favourites!</h5>
+      
+      <form method='POST'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <p class="card-text text-center display-6 pt-5 pb-5">Are you sure you wish to add {{course.name}} to Favourites? </p>
+        <input class="btn btn-primary text-center" type='submit' value='Yes'>
+        </form>
+    </div>
+</div>
+    
+    {% if messages %}
+    {% for message in messages %}
+    <p alert alert-danger> {{message}} </p>
+    {% endfor %}
+    {% endif %}
+{% endblock content %}
+
+{%block js%}
+{% endblock %}

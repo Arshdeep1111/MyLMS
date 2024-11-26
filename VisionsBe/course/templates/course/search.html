@@ -1,0 +1,27 @@
+{% extends 'course/base.html' %}
+{% load static %}
+
+{%block css%}
+{%endblock%}
+
+{%block title%}
+{%endblock%}
+
+{% block content %}
+  <h1>This is Search Result Page</h1>
+  {% for cart in tags %}
+  <div class="card border border-primary rounded mx-auto mt-5" style="width: 18rem;">
+    <img src={{cart.course.thumbnail.url}} alt="Thumbnail" height=120px width=120px class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{cart.course.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{cart.course.sub_heading}}</h6>
+        <p class="card-text">{{cart.course.description}}</p>
+        <p class="card-text">Price: ₹{{cart.course.price}}</p>
+        <a class="card-link btn btn-primary" href={% url 'coursedetail' cart.course.slug %}>Learn More</a> 
+      </div>
+    </div>
+  {% endfor %}
+{% endblock content %}
+
+{%block js%}
+{% endblock %}

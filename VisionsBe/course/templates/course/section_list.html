@@ -1,0 +1,30 @@
+{% extends 'course/base.html' %}
+{% load static %}
+
+{%block css%}
+{%endblock%}
+
+{%block title%}
+{%endblock%}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body border border-primary border-5">
+      <h5 class="card-title display-5">Course Sections</h5>
+      <ul class="list-group list-group-flush border border-primary">
+        {% for section in object_list %}
+    {% if section.is_preview or ismycourse %}
+        <li class="list-group-item mr-5">
+          <h6 class="card-subtitle mb-2 border border-primary"><a href={% url 'sectiondetail' section.course.slug section.id %} class="display-6">{{section.topic}}</a></h6>
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</div>
+</div>
+        
+{% endblock content %}
+
+{%block js%}
+{% endblock %}

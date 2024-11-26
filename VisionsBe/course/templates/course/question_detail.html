@@ -1,0 +1,65 @@
+{% extends 'course/base.html' %}
+{% load static %}
+
+{%block css%}
+{%endblock%}
+
+{%block title%}
+{%endblock%}
+
+{% block content %}
+<div class="container">
+    <div class="row my-3">
+        <div class="col-md-12">
+            <p class="text-center">Positive Marks: {{question.positive_marks}}</p>
+            <p class="text-center">Negative Marks: {{question.negative_marks}}</p>
+            {% if request.POST %}
+                {% if error_message %}
+                    <p class="text-center">{{error_message}}</p>
+                {% endif %}
+                <p class="text-center">Explanation: {{question.explanation}}</p>
+                <p class="text-center">Choice Selected By You: {{selected_choice.name}} </p>
+                {% for choice in choices %}
+                    {% if choice.is_correct %}
+                        <p class="text-center">Correct Answer: {{choice.name}} </p>
+                    {% endif %}
+                {% endfor %}
+                {% if has_prev %}
+                    <form class="justify-content-left" action={% url 'question' question.assessment.section.course.slug question.assessment.section.id question.assessment.id prev %} method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Previous" class="btn btn-primary">
+                    </form>
+                {% endif %}
+                {% if has_next %}
+                    <a href={% url 'question' question.assessment.section.course.slug question.assessment.section.id question.assessment.id next %} class="btn btn-success mx-auto d-flex justify-content-center w-25">Next</a>
+                {% else %}
+                    <a href={% url 'result' ua.pk|floatformat:'0' %} class="btn btn-primary mx-auto d-flex justify-content-center w-25">Submit</a>
+                {% endif %}
+            {% else %}
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend>
+                            <h1 class="text-center display-3 text-primary">{{question.question}}</h1>
+                        </legend>
+                        {% for choice in choices %}
+                        <div class="row">
+<div class="col-4">
+</div>
+<div class="col-4">
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" class="mx-auto">
+                            <label for="choice{{ forloop.counter }}" class="my-3 text-center">{{ choice.name }}</label><br>
+</div>
+                        </div>
+                        {% endfor %}
+                    </fieldset>
+                    <input type="submit" value="Save" class="btn btn-success my-3 mx-auto d-flex justify-content-center w-25">
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{%block js%}
+{% endblock %}

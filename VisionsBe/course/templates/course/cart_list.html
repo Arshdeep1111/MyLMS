@@ -1,0 +1,35 @@
+{% extends 'course/base.html' %}
+{% load static %}
+
+{%block css%}
+
+{%endblock%}
+
+{%block title%}
+{%endblock%}
+
+{% block content %}
+    {% if object_list %}
+    {% for cart in object_list %}
+    <div class="card border border-primary rounded mx-auto mt-5" style="width: 18rem;">
+      <img src={{cart.course.thumbnail.url}} alt="Thumbnail" height=120px width=120px class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{cart.course.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{cart.course.sub_heading}}</h6>
+          <p class="card-text">{{cart.course.description}}</p>
+          <p class="card-text">Price: ₹{{cart.course.price}}</p>
+          <a class="card-link btn btn-primary mx-auto d-flex mb-3" href={% url 'coursedetail' cart.course.slug %}>Show Course</a> 
+          <a class="btn btn-success mx-3" href={% url 'create_mycourse' cart.course.slug %}>Buy Now</a>
+          <a class="card-link btn btn-danger mx-3" href={% url 'delete_cart' cart.pk %}> Delete </a>
+          
+        </div>
+      </div>
+    {% endfor %}
+    {% else %}
+    <p class="alert alert-danger"> The cart is empty. </p>
+    {% endif %}
+{% endblock content %}
+
+{%block js%}
+
+{% endblock %}

@@ -1,0 +1,115 @@
+Models:
+->Course
+---->Course Name
+---->Thumbnail
+---->Sub-heading
+---->Description
+---->Tag
+---->Learning
+---->Prerequisite
+---->Teacher
+---->Created on
+---->Last updated
+---->Language
+---->Number of students
+---->is_active
+---->Price
+---->Discount
+---->Section
+---->Course Length
+---->Certificate
+---->Average Rating
+---->Reviews
+---->Number of users that favourite it
+---->Total number of videos
+---->Slug
+->Section
+---->Course
+---->Video
+---->Assessment
+---->Notes
+->Video
+---->Section
+---->Name
+---->Description
+---->Link
+---->Thumbnail
+---->is_preview
+->Assessment
+---->Section
+---->Name
+---->Question
+---->Marks_to_pass
+---->Marks_obtained
+---->Description
+---->is_preview
+---->Maximum Marks
+---->Choice
+---->Correct Choice
+->Notes
+---->Section
+---->Topic
+---->Description
+---->is_preview
+---->Thumbnail
+->User
+---->First Name
+---->Last Name
+---->Image
+---->Email
+---->Phone Number
+---->Username
+---->Password
+---->Course_enrolled
+---->Course_wishlist
+---->Course_favourite
+->Payment
+---->User
+---->Course
+---->Date
+---->Order ID
+---->Payment ID
+->Coupon Code
+---->Course
+---->User
+---->Coupon Text
+---->Valid Till
+---->Discount
+->Teacher
+---->Course
+---->Image
+---->Name
+---->Qualification
+---->Experience
+---->Other Achievements
+->Usercourse
+---->User
+---->Course
+---->Date Joined
+---->Completion
+---->Last Accessed Date
+->UserVideo
+---->User
+---->Video
+---->Watched?
+---->Date
+
+
+Views:
+->Home Page
+->Sign Up Page
+->Login Page
+->Reset Password / Forgot Password
+->Change Password
+->Course Info Page
+->Cart
+->My Courses
+->Wishlist Courses
+->Favourite Courses
+->Assessment 
+->Assessment Result
+->Review Course
+->Payment Page
+->User Profile
+->About Us
+->Contact Us

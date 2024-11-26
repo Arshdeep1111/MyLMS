@@ -1,0 +1,29 @@
+{% extends 'course/base.html' %}
+{% load static %}
+
+{%block css%}
+{%endblock%}
+
+{%block title%}
+{%endblock%}
+
+{% block content %}
+<h1 class="text-center display-1 text-primary font-weight-bold">{{object.topic}}</h1>
+<h1 class="text-center display-4 text-primary font-weight-bold">{{object.description}}</h1>
+    {% for v in videos %}
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="embed-responsive embed-responsive-21by9">
+                <iframe width="560" height="315" src={{v.link}} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+        <a href={% url 'assessment' assessment.section.course.slug assessment.section.id assessment.id %} class="btn btn-primary text-center my-3 w-25 justify-content-center mx-auto">{{assessment.name}}</a> <br>
+
+{% endblock content %}
+
+{%block js%}
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'course/base.html' %}
+{% load static %}
+
+{%block css%}
+{%endblock%}
+
+{%block title%}
+{%endblock%}
+
+{% block content %}
+    <div class="container border border-primary rounded-3 mt-5 mb-5" style="width: 50%;">
+        <h1 class='text-decoration-underline text-center text-primary'>SIGN UP</h1>
+        <p class='fs-5'>Enter the details below to create your account!</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="fieldWrapper">
+                
+                <div class="input-group mb-3">
+                    <span class= 'input-group-text fs-5'>{{ field.label_tag }}</span>
+                    {{ field }}
+                    
+                </div>
+                {%if field.errors%}
+                {% if field.help_text %}
+                <p class="help text-danger fs-5 border border-danger rounded-3 p-3">{{ field.help_text|safe }}</p>
+                {% endif %}
+                {% for error in field.errors %}
+                <p class="text-danger fs-5 border border-danger rounded-3 p-3">{{error}}</p>
+                {% endfor %}
+                {%endif%}
+            </div>
+{% endfor %}
+<div class="row">
+    <div class="col  d-flex justify-content-center">
+            <input type="submit" class="btn btn-outline-success fs-4" value="Sign Up">
+            </form>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col d-flex justify-content-center">
+            <span class = 'fs-5'>Already a user? </span>
+            <a class='btn btn-outline-info fs-5 ms-3 mb-3' href={% url 'login' %}>Login</a>
+        </div>
+    </div>
+    </div>
+{% endblock content %}
+
+{%block js%}
+{% endblock %}

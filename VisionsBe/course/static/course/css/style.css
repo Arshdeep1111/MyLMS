@@ -1,0 +1,63 @@
+.mycontainer {
+  margin: 0 auto;
+  position: relative;
+}
+
+
+.tooltip-content {
+  left: 10vw;
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 50px #3e32e020;
+  padding: 30px;
+  border-radius: 8px;
+  width: 24vw;
+  max-width: 300px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+
+}
+
+.tooltip-content .arrow{
+  position: absolute;
+  max-width: 10px;
+  height: 10px;
+  border: 10px solid transparent;
+  border-bottom-color: rgb(255, 255, 255);
+  top: 50%;
+  left: -5px;
+  transform: translate(-100%, -50%) rotate(270deg);
+}
+
+.pin {
+  border-radius: inherit;
+  cursor: pointer;
+}
+.pin:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+}
+
+/* Media Query */
+
+@media (max-width: 768px) {
+  .myrighttooltip .tooltip-content {
+    flex-direction: column;
+    max-width: 300px;
+  }
+  .myrighttooltip .tooltip-content .content{
+    width: 100%;
+  }
+}
+
+.mytooltip.active .tooltip-content {
+  opacity: 1;
+  pointer-events: all;
+  display: block;
+}

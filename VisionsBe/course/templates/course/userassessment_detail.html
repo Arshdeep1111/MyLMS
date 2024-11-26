@@ -1,0 +1,25 @@
+{% extends 'course/base.html' %}
+{% load static %}
+
+{%block css%}
+{%endblock%}
+
+{%block title%}
+{%endblock%}
+
+{% block content %}
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    <h1 class="text-center display-3 text-primary">Result: </h1>
+    <p>User: {{object.user.username}}</p>
+    <p>Assessment: {{object.assessment.section.course.name}} {{object.assessment.section.name}} {{object.assessment.name}}</p>
+    <p>Passing Marks: {{object.passing_marks}}</p>
+    <p>Marks Scored: {{object.marks}}</p>
+    <p>Passed: {{object.has_passed}}</p>
+    {% if hasnextsection %}
+    <a href="{% url 'sectiondetail' nextsection.course.slug nextsection.pk %}" class="btn btn-primary mt-3">Next Section</a>
+    {% endif %}
+  </div>
+{% endblock content %}
+
+{%block js%}
+{% endblock %}

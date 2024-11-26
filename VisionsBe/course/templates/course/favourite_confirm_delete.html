@@ -1,0 +1,27 @@
+{% extends 'course/base.html' %}
+{% load static %}
+
+{%block css%}
+{%endblock%}
+
+{%block title%}
+{%endblock%}
+
+{% block content %}
+<div class="card text-center">
+    <div class="card-header">
+      Delete This Course?
+    </div>
+    <div class="card-body">
+      <h5 class="card-title pt-5 pb-5 display-4 font-weight-bold">Confirmation to Delete</h5>
+      <form method='POST'>
+        {% csrf_token %}
+        <p class="card-text text-center display-6 pt-5 pb-5">Are you sure you want to remove {{object.course.name}} from your favourites?</p>
+        <input class="btn btn-primary text-center" type='submit' value='Yes'>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+{%block js%}
+{% endblock %}
